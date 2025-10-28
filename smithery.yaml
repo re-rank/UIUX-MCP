@@ -1,25 +1,17 @@
 name: krds-uiux-mcp-server
 version: 1.0.0
-description: KRDS (Korea Responsive Design System) UI/UX 가이드라인을 기반으로 컴포넌트 검색, 코드 검증, 디자인 토큰 제공 기능을 제공하는 MCP 서버
+description: KRDS UI/UX design system MCP server for component search, code validation, and design tokens
 author: krds
 homepage: https://github.com/KRDS-uiux/krds-uiux
 license: ISC
 
-# 빌드 설정
 build:
   type: node
   commands:
-    - npm install
+    - npm ci
     - npm run build
-  entrypoint: build/index.js
 
-# 런타임 설정
 runtime: typescript
-startCommand:
-  type: stdio
-  command: node
-  args:
-    - build/index.js
 
 # MCP 서버 메타데이터
 mcp:
