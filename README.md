@@ -25,12 +25,28 @@
 
 ## 📦 설치
 
+### Smithery를 통한 설치 (추천)
+
+Smithery에서 원클릭으로 설치:
+
 ```bash
-# 프로젝트 클론 또는 이동
-cd your-project-directory
+npx @smithery/cli install krds-uiux-mcp-server
+```
+
+또는 [Smithery](https://smithery.ai)에서 직접 설치
+
+### 수동 설치
+
+```bash
+# 프로젝트 클론
+git clone https://github.com/your-repo/krds-uiux-mcp-server
+cd krds-uiux-mcp-server
 
 # 의존성 설치
 npm install
+
+# 빌드
+npm run build
 ```
 
 ## 🚀 사용법
@@ -235,9 +251,35 @@ KRDS (Korea Responsive Design System)는 대한민국 디지털 정부를 위한
 
 ISC
 
+## 🚢 배포
+
+### Smithery에 배포하기
+
+1. **저장소 준비**
+   ```bash
+   git add .
+   git commit -m "Add smithery.yaml configuration"
+   git push
+   ```
+
+2. **Smithery에 등록**
+   - [Smithery](https://smithery.ai)에 방문
+   - GitHub 저장소 연결
+   - 자동으로 빌드 및 배포됨
+
+### 로컬 배포
+
+```bash
+npm run build
+```
+
+빌드된 `build/index.js` 파일을 MCP 클라이언트 설정에서 직접 참조할 수 있습니다.
+
 ## 🔗 관련 링크
 
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [MCP SDK](https://github.com/modelcontextprotocol/typescript-sdk)
 - [KRDS GitHub](https://github.com/KRDS-uiux/krds-uiux)
+- [KRDS 공식 웹사이트](https://www.krds.go.kr/)
+- [Smithery](https://smithery.ai) - MCP 서버 배포 플랫폼
 

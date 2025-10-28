@@ -1,7 +1,7 @@
 {
   "name": "krds-uiux-mcp-server",
   "version": "1.0.0",
-  "description": "MCP server for KRDS UI/UX design system integration",
+  "description": "MCP server for KRDS UI/UX design system integration - 한국 정부 디지털 서비스를 위한 디자인 시스템",
   "type": "module",
   "main": "build/index.js",
   "bin": {
@@ -12,6 +12,38 @@
     "prepare": "npm run build",
     "dev": "tsc && node build/index.js"
   },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "krds",
+    "design-system",
+    "ui",
+    "ux",
+    "korea",
+    "government",
+    "components",
+    "html",
+    "css",
+    "accessibility",
+    "korean"
+  ],
+  "author": "KRDS Team",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KRDS-uiux/krds-uiux"
+  },
+  "homepage": "https://www.krds.go.kr/",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "build/**/*",
+    "README.md",
+    "SETUP_GUIDE.md",
+    "smithery.yaml"
+  ],
   "dependencies": {
     "krds-uiux": "^1.0.5",
     "@modelcontextprotocol/sdk": "^1.0.4"

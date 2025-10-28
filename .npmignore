@@ -1,0 +1,28 @@
+# Source files
+src/
+tsconfig.json
+
+# Tests
+test-mcp.js
+*.test.js
+*.spec.js
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
