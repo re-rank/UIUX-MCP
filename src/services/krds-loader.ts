@@ -1,17 +1,27 @@
 import { readFile, readdir } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { cwd } from 'process';
 import type { KRDSComponent, DesignToken, TokenSearchResult } from '../types/krds.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// 프로젝트 루트 경로 가져오기
+function getProjectRoot(): string {
+  // ESM 환경
+  if (typeof import.meta !== 'undefined' && import.meta.url) {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    return join(__dirname, '..', '..');
+  }
+  // CJS 환경 또는 fallback
+  return cwd();
+}
 
 /**
  * KRDS 패키지 루트 경로 찾기
  */
 function getKRDSPath(): string {
   // node_modules에서 krds-uiux 찾기
-  const projectRoot = join(__dirname, '..', '..');
+  const projectRoot = getProjectRoot();
   return join(projectRoot, 'node_modules', 'krds-uiux');
 }
 

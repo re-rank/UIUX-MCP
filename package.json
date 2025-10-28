@@ -4,6 +4,7 @@
   "description": "MCP server for KRDS UI/UX design system integration - 한국 정부 디지털 서비스를 위한 디자인 시스템",
   "type": "module",
   "main": "build/index.js",
+  "module": "src/index.ts",
   "bin": {
     "krds-mcp-server": "./build/index.js"
   },
