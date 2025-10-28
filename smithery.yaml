@@ -7,21 +7,14 @@ license: ISC
 
 # 빌드 설정
 build:
-  # Node.js 프로젝트
   type: node
-  
-  # 빌드 명령어
   commands:
     - npm install
     - npm run build
-  
-  # 진입점
   entrypoint: build/index.js
 
 # 런타임 설정
-runtime:
-  # Node.js 버전
-  node: ">=18.0.0"
+runtime: typescript
 
 # MCP 서버 메타데이터
 mcp:
