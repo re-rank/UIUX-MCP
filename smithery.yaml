@@ -14,13 +14,12 @@ build:
   entrypoint: build/index.js
 
 # 런타임 설정
-runtime: container
+runtime: typescript
 startCommand:
+  type: stdio
   command: node
   args:
     - build/index.js
-container:
-  dockerfile: Dockerfile
 
 # MCP 서버 메타데이터
 mcp:
