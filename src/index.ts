@@ -1,17 +1,20 @@
-#!/usr/bin/env node
-
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
   Tool,
 } from '@modelcontextprotocol/sdk/types.js';
+import { z } from 'zod';
 
 import { KRDSLoader } from './services/krds-loader.js';
 import { searchComponents, getComponentCode, listCategories, listComponentNames } from './tools/component-search.js';
 import { searchDesignTokens, getTokenStats, getColorPalette } from './tools/token-provider.js';
 import { validateCode } from './tools/code-validator.js';
+
+// Smithery CLI가 자동으로 감지하는 세션 구성 스키마 (선택적)
+export const configSchema = z.object({
+  enableSuggestions: z.boolean().default(true).describe('KRDS 컴포넌트 추천 사용 여부'),
+});
 
 /**
  * KRDS UI/UX MCP 서버
@@ -397,18 +400,12 @@ class KRDSMCPServer {
     };
   }
 
-  async run(): Promise<void> {
-    const transport = new StdioServerTransport();
-    await this.server.connect(transport);
-    
-    console.error('KRDS UI/UX MCP 서버가 시작되었습니다.');
-  }
 }
 
-// 서버 시작
-const server = new KRDSMCPServer();
-server.run().catch((error) => {
-  console.error('서버 시작 중 오류 발생:', error);
-  process.exit(1);
-});
+// Smithery CLI: createServer를 export default로 제공 (HTTP 스트리밍 전용)
+export default function createServer({ config }: { config: { enableSuggestions: boolean } }) {
+  const app = new KRDSMCPServer();
+  // config 값을 내부 로직에 연결하려면 여기서 사용 가능
+  return app['server'];
+}
 

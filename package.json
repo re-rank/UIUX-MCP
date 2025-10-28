@@ -46,9 +46,10 @@
     "smithery.yaml"
   ],
   "dependencies": {
-    "krds-uiux": "^1.0.5",
     "@modelcontextprotocol/sdk": "^1.0.4",
-    "@smithery/sdk": "^1.6.0"
+    "@smithery/sdk": "^1.6.0",
+    "krds-uiux": "^1.0.5",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
