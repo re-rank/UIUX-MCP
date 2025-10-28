@@ -1,5 +1,7 @@
 # KRDS UI/UX MCP Server
 
+[![smithery badge](https://smithery.ai/badge/krds-uiux-mcp-server)](https://smithery.ai/server/krds-uiux-mcp-server)
+
 한국 정부 디지털 서비스를 위한 디자인 시스템인 **KRDS (Korea Responsive Design System)**를 AI 어시스턴트와 통합하여 사용할 수 있는 MCP (Model Context Protocol) 서버입니다.
 
 ## 🎯 주요 기능
@@ -24,6 +26,14 @@
 - 각 리소스 사용법 안내
 
 ## 📦 설치
+
+### Installing via Smithery
+
+To install KRDS UI/UX MCP Server automatically via [Smithery](https://smithery.ai/server/krds-uiux-mcp-server):
+
+```bash
+npx -y @smithery/cli install krds-uiux-mcp-server
+```
 
 ### Smithery를 통한 설치 (추천)
 
@@ -282,4 +292,3 @@ npm run build
 - [KRDS GitHub](https://github.com/KRDS-uiux/krds-uiux)
 - [KRDS 공식 웹사이트](https://www.krds.go.kr/)
 - [Smithery](https://smithery.ai) - MCP 서버 배포 플랫폼
-
