@@ -1,4 +1,4 @@
-import { readFile, readdir } from 'fs/promises';
+import { readFile, readdir, access } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { cwd } from 'process';
@@ -6,13 +6,7 @@ import type { KRDSComponent, DesignToken, TokenSearchResult } from '../types/krd
 
 // 프로젝트 루트 경로 가져오기
 function getProjectRoot(): string {
-  // ESM 환경
-  if (typeof import.meta !== 'undefined' && import.meta.url) {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    return join(__dirname, '..', '..');
-  }
-  // CJS 환경 또는 fallback
+  // CJS/ESM 불문하고 프로세스 CWD 기준
   return cwd();
 }
 
@@ -46,28 +40,29 @@ export class KRDSLoader {
     }
 
     const componentsPath = join(this.krdsPath, 'html', 'code');
-    const files = await readdir(componentsPath);
-    
     const components: KRDSComponent[] = [];
-    
-    for (const file of files) {
-      if (!file.endsWith('.html')) continue;
-      
-      const filePath = join(componentsPath, file);
-      const htmlCode = await readFile(filePath, 'utf-8');
-      
-      const name = file.replace('.html', '');
-      const category = this.categorizeComponent(name);
-      
-      components.push({
-        name,
-        fileName: file,
-        category,
-        htmlCode,
-        description: this.extractDescription(htmlCode)
-      });
+
+    try {
+      const files = await readdir(componentsPath);
+      for (const file of files) {
+        if (!file.endsWith('.html')) continue;
+        const filePath = join(componentsPath, file);
+        const htmlCode = await readFile(filePath, 'utf-8');
+        const name = file.replace('.html', '');
+        const category = this.categorizeComponent(name);
+        components.push({
+          name,
+          fileName: file,
+          category,
+          htmlCode,
+          description: this.extractDescription(htmlCode)
+        });
+      }
+    } catch {
+      // 패키지가 누락되었거나 경로가 잘못된 경우 빈 배열 반환
+      return [];
     }
-    
+
     this.componentsCache = components;
     return components;
   }
@@ -165,11 +160,11 @@ export class KRDSLoader {
   async getResourcePaths(resourceType: 'css' | 'scss' | 'fonts' | 'images' | 'js'): Promise<string[]> {
     const resourcesPath = join(this.krdsPath, 'resources');
     const targetPath = join(resourcesPath, resourceType);
-    
+
     try {
       const files = await readdir(targetPath);
       return files.map(file => join('node_modules', 'krds-uiux', 'resources', resourceType, file));
-    } catch (error) {
+    } catch {
       return [];
     }
   }
