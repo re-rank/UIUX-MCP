@@ -2,6 +2,10 @@
 
 한국 정부 디지털 서비스를 위한 디자인 시스템인 **KRDS (Korea Responsive Design System)**를 AI 어시스턴트와 통합하여 사용할 수 있는 MCP (Model Context Protocol) 서버입니다.
 
+<a href="https://glama.ai/mcp/servers/@re-rank/UIUX-MCP">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@re-rank/UIUX-MCP/badge" alt="KRDS UI/UX Server MCP server" />
+</a>
+
 ## 🎯 주요 기능
 
 ### 1. **컴포넌트 검색 및 제공**
@@ -282,4 +286,3 @@ npm run build
 - [KRDS GitHub](https://github.com/KRDS-uiux/krds-uiux)
 - [KRDS 공식 웹사이트](https://www.krds.go.kr/)
 - [Smithery](https://smithery.ai) - MCP 서버 배포 플랫폼
-
