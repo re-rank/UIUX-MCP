@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/re-rank-offical-uiux-mcp-badge.png)](https://mseep.ai/app/re-rank-offical-uiux-mcp)
+
 # KRDS UI/UX MCP Server
 
 한국 정부 디지털 서비스를 위한 디자인 시스템인 **KRDS (Korea Responsive Design System)**를 AI 어시스턴트와 통합하여 사용할 수 있는 MCP (Model Context Protocol) 서버입니다.
